@@ -41,7 +41,7 @@ body{
 
 main{
     width: 100vw;
-    min-height: 100vh;
+    min-height: 90vh;
     background: $black;
     @include flex(center, center);
 }
