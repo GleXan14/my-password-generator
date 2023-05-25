@@ -1,0 +1,286 @@
+
+$black:rgb(18,17,22);
+$light-black:rgb(36,35,41);
+$light-green:rgb(165,255,175);
+$gray:rgb(112,111,119);
+$yellow:rgb(238,205,126);
+$white:rgb(231,233,239);
+
+.generator{
+    &-container{
+        position: relative;
+        color: $white;
+        padding: 25px;
+        width: 50%;
+
+        .controls-container{
+            position: relative;
+            background: $light-black;
+            padding: 25px;
+            border-radius: 5px;
+        }
+    }
+
+    &-title{
+        color: $gray;
+        font-size: 25px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    &-input-container{
+        position: relative;
+        margin: 15px 0;
+
+        input{
+            width: 100%;
+
+            background-color: $light-black;
+            color: $white;
+            border: transparent;
+            border-radius: 5px;
+            font-size: 27px;
+            padding: 15px 70px 15px 15px;
+
+        }
+
+        .icon-container{
+            position: absolute;
+            display: flex;
+            align-items: center;
+            width: 30px;
+            height: auto;
+            right: 15px;
+            bottom: 15px;
+
+            .copypaste-icon{
+                position: relative;
+                width: 30px;
+                height: auto;
+                fill: $light-green;
+                transition: .2s;
+                cursor: pointer;
+    
+                
+            }
+            
+            &:hover{
+                .copypaste-icon{
+                    fill: $white;            
+                }
+
+                &::after {
+                    content: attr(data-title);
+                    position: absolute;
+                    background: $gray;
+                    color: $white;
+                    display: inline-block;
+                    right: -8px;
+                    bottom: -40px;
+                    font-size: 14px;
+                    z-index: 99999;
+                    padding: 5px;
+                    border-radius: 5px;
+                }   
+            }
+            
+        }
+    }
+
+    &-slider-label{
+        position: relative;
+        display: flex;
+        width: 100%;
+        align-items: center;
+
+        label{
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        p{
+            margin-left: auto;
+            font-size: 36px;
+            font-weight: 700;
+            color: $light-green;
+        }
+    }
+
+    &-slider-container{
+
+        margin: 10px 0 20px;
+
+        input{
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 50px;
+
+            &::-webkit-slider-thumb{
+                -webkit-appearance: none;
+                appearance: none;
+                width: 30px;
+                height: 30px;
+                background-color: $white;
+                border-radius: 50%;
+                border: 2px solid $white;
+                cursor: pointer;
+                transition: .2s;
+
+                &:hover{
+                    background-color: $light-black;
+                    border-color: $light-green;
+                }
+            }
+
+        }
+
+        
+    }
+
+    &-checkboxes{
+        display: flex;
+        flex-direction: column;
+
+        .generator-checkbox-container{
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+
+
+            label{
+                margin-left: 15px;
+                word-spacing: 2px;
+                letter-spacing: 2px;
+                font-size: 15px;
+            }
+
+            input{
+                width: 22px;
+                height: 22px;
+                appearance: none;
+                background: $light-black;
+                border: 2px solid $white;
+                border-radius: 2px;
+                cursor: pointer;
+
+                &:checked{
+                    background: $light-green;
+                    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='black' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+                    background-size: 24px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+
+                &:hover{
+                    border-color: $light-green;
+                }
+            }
+
+        }
+    }
+
+    &-strength{
+        display: flex;
+        background: $black;
+        align-items: center;
+        padding: 25px;
+        margin: 20px 0;
+        border-radius: 5px;
+
+        & > p{
+            font-size: 15px;
+            font-weight: bold;
+            color: $gray;
+        }
+
+        &-selectors{
+            display: flex;
+            margin-left: auto;
+
+            & > p{
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+
+        &-bars{
+            display: flex;
+            margin-left: 10px;
+
+            hr{
+                width: 8px;
+                background: transparent;
+                border: 2px solid $white;
+                // cursor: pointer;
+
+                &.selected{
+                    background: $yellow;
+                }
+
+                // &:hover{
+                //     background: $yellow;
+                //     border-color: $yellow;
+                // }
+
+                &:not(:first-child){
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+
+    &-button{
+        button{
+            width: 100%;
+            height: 60px;
+            background: $light-green;
+            border: 2px solid $light-green;
+            border-radius: 4px;
+            color: $black;
+            font-size: 15px;
+            text-transform: uppercase;
+            font-weight: bolder;
+            cursor: pointer;
+            transition: .2s;
+
+            &:hover{
+                background: $light-black;
+                color: $light-green
+            }
+
+            &[disabled],
+            &:disabled{
+                background: $gray;
+                color: $white;
+                border-color: $gray;
+                cursor: not-allowed;
+
+                &:hover{
+                    background: $gray;
+                    color: $white;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 1400px){
+        &-container{
+            width: 60%;
+        }
+    }
+
+    @media (max-width: 1024px){
+        &-container{
+            width: 80%;
+        }
+    }
+
+    @media (max-width: 768px){
+        &-container{
+            width: 100%;
+        }
+    }
+
+}

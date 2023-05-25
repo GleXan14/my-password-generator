@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap');
+
+
+$black:rgb(18,17,22);
+$light-black:rgb(36,35,41);
+$light-green:rgb(165,255,175);
+$gray:rgb(112,111,119);
+$yellow:rgb(238,205,126);
+$white:rgb(231,233,239);
+
+// mixins
+@mixin flex($justify-content, $align-item) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-item;
+}
+
+@mixin borderSolid($color){
+    border: 1px solid $color;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    scroll-behavior: smooth;
+    transition: .2s;
+}
+
+html,
+body{
+    position: relative;
+    font-family: 'Raleway', sans-serif !important;
+    // background: #f5f5f5 !important;
+}
+
+
+main{
+    width: 100vw;
+    min-height: 100vh;
+    background: $black;
+    @include flex(center, center);
+}

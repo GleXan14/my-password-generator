@@ -1,0 +1,84 @@
+
+<main>
+
+    <div class="generator-container">
+        <h3 class="generator-title">My Password Generator</h3>
+
+        <div class="generator-input-container">
+            <input id="generator-input" name="generator-input" 
+            [(ngModel)]="password"
+            type="text" readonly/>
+            
+            <div class="icon-container" [attr.data-title]="copyTooltipText" (click)="copyPassword()">
+                <svg id="miSvg" class="copypaste-icon" viewBox="0 0 120 130">
+                    <use xlink:href="assets/icons/copy-icon.svg#svg-content"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="controls-container" [formGroup]="controlsForm">
+            <div class="generator-slider-label">
+                <label for="generator-slider">Character Length</label>
+                <p>{{characterLength}}</p>
+            </div>
+            <div class="generator-slider-container">
+                <input [style.background]="slideBackgroundStyle" formControlName="charLength"
+                type="range" min="1" [max]="characterLengthMax" id="generator-slider" name="generator-slider">
+            </div>
+
+            <div class="generator-checkboxes">
+                <div class="generator-checkbox-container">
+                    <input type="checkbox" class="generator-checkbox" name="generator-checkbox1" formControlName="upper" checked>
+                    <label for="generator-checkbox1">Include Uppercase Letters</label>
+                </div>
+
+                <div class="generator-checkbox-container">
+                    <input type="checkbox" class="generator-checkbox" name="generator-checkbox2" formControlName="lower" checked>
+                    <label for="generator-checkbox-lower">Include Lowercase Letters</label>
+                </div>
+                
+                <div class="generator-checkbox-container">
+                    <input type="checkbox" class="generator-checkbox" name="generator-checkbox-number" formControlName="number" checked>
+                    <label for="generator-checkbox3">Include Numbers</label>
+                </div>
+                
+                <div class="generator-checkbox-container">
+                    <input type="checkbox" class="generator-checkbox" name="generator-checkbox-symbol" formControlName="symbol">
+                    <label for="generator-checkbox4">Include Symbols</label>
+                </div>
+            </div>
+
+            <div class="generator-strength">
+                <p>STRENGTH</p>
+
+                <div class="generator-strength-selectors">
+                    <p>{{getStrengthText()}}</p>
+
+                    <div class="generator-strength-bars">
+                        <hr [ngClass]="{ 
+                            'selected': strengthSelected
+                        }">
+                        <hr [ngClass]="{ 
+                            'selected': strengthSelected === strengths.WEAK ||
+                                strengthSelected === strengths.GOOD ||
+                                strengthSelected === strengths.STRONG
+                        }">
+                        <hr [ngClass]="{ 
+                            'selected': strengthSelected === strengths.GOOD ||
+                                strengthSelected === strengths.STRONG
+                        }" >
+                        <hr [ngClass]="{ 
+                            'selected': strengthSelected === strengths.STRONG
+                        }">
+                    </div>
+                </div>
+            </div>
+
+            <div class="generator-button">
+                <button id="generate-button" 
+                [disabled]="!validateForm()"
+                (click)="generatePassword()">Generate →</button>
+            </div>
+        </div>
+    </div>
+</main>
